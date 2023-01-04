@@ -18,8 +18,13 @@ export default function LoginForm() {
   const [password, setPassword] = useState('')
 
   const handleEmail = (e) => {
-    const value = e.target.value
+    const { value } = e.target
     setEmail(value)
+  }
+
+  const handlePassword = (e) => {
+    const { value } = e.target
+    setPassword(value)
   }
 
   return (
@@ -40,11 +45,16 @@ export default function LoginForm() {
         </div>
         <div className="row">
           <label htmlFor={'password'}>Password</label>
-          <input id={'password'} type={'password'} value={password} />
+          <input
+            id={'password'}
+            type={'password'}
+            value={password}
+            onChange={handlePassword}
+          />
         </div>
 
         <div className="button">
-          <button>Login</button>
+          <button disabled={true}>Login</button>
         </div>
       </div>
     </div>
