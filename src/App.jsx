@@ -15,8 +15,9 @@ import { login } from './utils.js'
 // todo - Mostre um alerta caso o login seja efetuado com sucesso (javascript alert). Investigue a função login() para entender como ter sucesso na requisição.
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('sadadasd')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(null)
 
   const handleEmail = (e) => {
     const { value } = e.target
@@ -35,7 +36,7 @@ export default function LoginForm() {
     login(values)
       .then(() => {})
       .catch((error) => {
-        console.log(error)
+        setError(error)
       })
   }
 
@@ -44,7 +45,7 @@ export default function LoginForm() {
       <div className="login-form">
         <h1>Login Form 🐞</h1>
         {/* Coloque a mensagem de erro de login na div abaixo. Mostre a div somente se houver uma mensagem de erro. */}
-        <div className="errorMessage"></div>
+        {error && <div className="errorMessage"> {error.message}</div>}
         <div className="row">
           <label htmlFor={'email'}>Email</label>
           <input
