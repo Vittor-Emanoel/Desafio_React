@@ -14,8 +14,13 @@ import './index.css'
 // todo - Mostre um alerta caso o login seja efetuado com sucesso (javascript alert). Investigue a função login() para entender como ter sucesso na requisição.
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('sadadasd')
   const [password, setPassword] = useState('')
+
+  const handleEmail = (e) => {
+    const value = e.target.value
+    setEmail(value)
+  }
 
   return (
     <div className="wrapper">
@@ -25,11 +30,17 @@ export default function LoginForm() {
         <div className="errorMessage"></div>
         <div className="row">
           <label htmlFor={'email'}>Email</label>
-          <input id={'email'} type={'email'} autoComplete="off" />
+          <input
+            id={'email'}
+            type={'email'}
+            autoComplete="off"
+            value={email}
+            onChange={handleEmail}
+          />
         </div>
         <div className="row">
           <label htmlFor={'password'}>Password</label>
-          <input id={'password'} type={'password'} />
+          <input id={'password'} type={'password'} value={password} />
         </div>
 
         <div className="button">
