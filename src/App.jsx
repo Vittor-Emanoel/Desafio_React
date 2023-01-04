@@ -1,6 +1,5 @@
-import { login } from './utils';
-import './index.css';
-import { useState } from 'react';
+import { useState } from 'react'
+import './index.css'
 
 // Instruções:
 // * Você tem um formulário de login INCOMPLETO
@@ -15,25 +14,28 @@ import { useState } from 'react';
 // todo - Mostre um alerta caso o login seja efetuado com sucesso (javascript alert). Investigue a função login() para entender como ter sucesso na requisição.
 
 export default function LoginForm() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
-    <div className='wrapper'>
-      <div className='login-form'>
+    <div className="wrapper">
+      <div className="login-form">
         <h1>Login Form 🐞</h1>
         {/* Coloque a mensagem de erro de login na div abaixo. Mostre a div somente se houver uma mensagem de erro. */}
-        <div className='errorMessage'></div>
-        <div className='row'>
+        <div className="errorMessage"></div>
+        <div className="row">
           <label htmlFor={'email'}>Email</label>
-          <input id={'email'} type={'email'} autoComplete='off' />
+          <input id={'email'} type={'email'} autoComplete="off" />
         </div>
-        <div className='row'>
+        <div className="row">
           <label htmlFor={'password'}>Password</label>
           <input id={'password'} type={'password'} />
         </div>
 
-        <div className='button'>
+        <div className="button">
           <button>Login</button>
         </div>
       </div>
     </div>
-  );
+  )
 }
