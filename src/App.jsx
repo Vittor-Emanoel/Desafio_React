@@ -18,6 +18,7 @@ export default function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+  const [isRequesting, setIsRequesting] = useState(false)
 
   const handleEmail = (e) => {
     const { value } = e.target
@@ -32,11 +33,19 @@ export default function LoginForm() {
   const handleSubmit = () => {
     console.log('cliquei')
 
+    setEmail(null)
+    setIsRequesting(true)
+
     let values = { email: email, password: password }
+
+    //trabalhando com promise
     login(values)
       .then(() => {})
       .catch((error) => {
         setError(error)
+      })
+      .finally(() => {
+        setIsRequesting(false)
       })
   }
 
@@ -68,7 +77,7 @@ export default function LoginForm() {
 
         <div className="button">
           <button
-            disabled={email === '' || password.length < 6}
+            disabled={email === '' || password.length < 6 || isRequesting}
             onClick={handleSubmit}
           >
             Login
