@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './index.css'
+import { login } from './utils.js'
 
 // Instruções:
 // * Você tem um formulário de login INCOMPLETO
@@ -29,6 +30,13 @@ export default function LoginForm() {
 
   const handleSubmit = () => {
     console.log('cliquei')
+
+    let values = { email: email, password: password }
+    login(values)
+      .then(() => {})
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   return (
