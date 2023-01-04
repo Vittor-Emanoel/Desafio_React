@@ -17,7 +17,7 @@ import { login } from './utils.js'
 export default function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState(null)
+  const [error, setError] = useState('')
   const [isRequesting, setIsRequesting] = useState(false)
 
   const handleEmail = (e) => {
@@ -33,14 +33,16 @@ export default function LoginForm() {
   const handleSubmit = () => {
     console.log('cliquei')
 
-    setEmail(null)
+    setEmail('')
     setIsRequesting(true)
 
     let values = { email: email, password: password }
 
     //trabalhando com promise
     login(values)
-      .then(() => {})
+      .then(() => {
+        alert('Login success')
+      })
       .catch((error) => {
         setError(error)
       })
